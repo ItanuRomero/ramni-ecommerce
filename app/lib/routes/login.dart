@@ -11,42 +11,84 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(widget.title),
+          elevation: 0,
+          leading: const BackButton(color: Colors.white),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushNamed(RouteGenerator.uploadPhoto);
-        },
-        tooltip: 'Ir para upload',
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
+        body: const MyStatelessWidget());
+  }
+}
+
+class MyStatelessWidget extends StatelessWidget {
+  const MyStatelessWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.pink,
+        child: Container(
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20))),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  SizedBox(
+                    child: Image.asset(
+                      "images/logo_app.png",
+                      color: Colors.white,
+                      width: 80,
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(45),
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned.fill(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: <Color>[
+                                  Color.fromARGB(255, 234, 133, 143),
+                                  Color.fromARGB(255, 255, 62, 104),
+                                  Color.fromARGB(255, 255, 36, 83),
+                                  Color.fromARGB(255, 220, 14, 73),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            padding: const EdgeInsets.only(
+                                right: 60, left: 60, bottom: 20, top: 20),
+                            textStyle: const TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .pushNamed(RouteGenerator.uploadPhoto);
+                          },
+                          child: const Text('SIGN IN'),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              )
+            ])));
   }
 }
