@@ -1,4 +1,5 @@
 import 'package:app/routes.dart';
+import 'package:app/widgets/signUpForm.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -73,7 +74,7 @@ class MyStatelessWidget extends StatelessWidget {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.white,
                             padding: const EdgeInsets.only(
                                 right: 60, left: 60, bottom: 20, top: 20),
                             textStyle: const TextStyle(fontSize: 20),
