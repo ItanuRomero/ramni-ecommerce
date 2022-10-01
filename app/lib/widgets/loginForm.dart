@@ -2,16 +2,16 @@ import 'package:app/routes.dart';
 import 'package:app/widgets/formField.dart';
 import 'package:flutter/material.dart';
 
-class SignUpForm extends StatefulWidget {
-  const SignUpForm({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  SignUpFormState createState() {
-    return SignUpFormState();
+  LoginFormState createState() {
+    return LoginFormState();
   }
 }
 
-class SignUpFormState extends State<SignUpForm> {
+class LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -22,17 +22,7 @@ class SignUpFormState extends State<SignUpForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const TheFormField(
-              label: "Nome", hint: "Digite seu nome aqui", password: false),
-          const TheFormField(
-            label: "E-mail",
-            hint: "Digite seu e-mail aqui",
-            password: false,
-          ),
-          const TheFormField(
-            label: "Telefone",
-            hint: "Digite seu telefone aqui",
-            password: false,
-          ),
+              label: "E-mail", hint: "Digite seu e-mail aqui", password: false),
           const TheFormField(
             label: "Senha",
             hint: "Digite sua senha aqui",
@@ -49,17 +39,17 @@ class SignUpFormState extends State<SignUpForm> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Criando seu usuário')),
+                      const SnackBar(content: Text('validando dados...')),
                     );
                     Future.delayed(const Duration(milliseconds: 2000), () {
                       setState(() {
                         Navigator.of(context)
-                            .pushNamed(RouteGenerator.loginPage);
+                            .pushNamed(RouteGenerator.uploadPhoto);
                       });
                     });
                   }
                 },
-                child: const Text('NEXT'),
+                child: const Text('SIGN IN'),
               ),
             ),
           )

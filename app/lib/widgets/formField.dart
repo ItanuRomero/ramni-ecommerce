@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 
 class TheFormField extends StatelessWidget {
-  const TheFormField({Key? key, required this.hintText, required this.password})
-      : super(key: key);
+  const TheFormField({
+    Key? key,
+    required this.hint,
+    required this.password,
+    required this.label,
+  }) : super(key: key);
 
-  final String hintText;
+  final String label;
+  final String hint;
   final bool password;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
       child: TextFormField(
         decoration: InputDecoration(
-            hintText: hintText,
+            labelText: label,
+            hintText: hint,
             contentPadding: const EdgeInsets.symmetric(horizontal: 10)),
         validator: (value) {
           if (value == null || value.isEmpty) {
