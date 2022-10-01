@@ -80,7 +80,7 @@ class MyStatelessWidget extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 100.0, top: 30),
               child: TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.pink,
+                  //foregroundColor: Colors.pink,
                   backgroundColor: Colors.white,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(45))),
@@ -99,7 +99,7 @@ class MyStatelessWidget extends StatelessWidget {
             children: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.pink,
+                  //foregroundColor: Colors.pink,
                   backgroundColor: Colors.white,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(45))),

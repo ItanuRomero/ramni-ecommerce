@@ -1,4 +1,5 @@
 import 'package:app/routes.dart';
+import 'package:app/widgets/formField.dart';
 import 'package:flutter/material.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -20,33 +21,44 @@ class SignUpFormState extends State<SignUpForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFormField(
-            decoration: const InputDecoration(hintText: "Nome"),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Favor inserir todos os dados';
-              }
-              return null;
-            },
+          const TheFormField(hintText: "Nome", password: false),
+          const TheFormField(
+            hintText: "Email",
+            password: false,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processando dados')),
-                  );
-                  Future.delayed(const Duration(milliseconds: 3000), () {
-                    setState(() {
-                      Navigator.of(context).pushNamed(RouteGenerator.loginPage);
+          const TheFormField(
+            hintText: "Telefone",
+            password: false,
+          ),
+          const TheFormField(
+            hintText: "Senha",
+            password: true,
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.pinkAccent,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 3, horizontal: 10)),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Criando seu usuário')),
+                    );
+                    Future.delayed(const Duration(milliseconds: 2000), () {
+                      setState(() {
+                        Navigator.of(context)
+                            .pushNamed(RouteGenerator.loginPage);
+                      });
                     });
-                  });
-                }
-              },
-              child: const Text('NEXT'),
+                  }
+                },
+                child: const Text('NEXT'),
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

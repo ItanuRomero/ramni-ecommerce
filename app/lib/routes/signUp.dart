@@ -72,45 +72,6 @@ class MyStatelessWidget extends StatelessWidget {
                       child: SignUpForm(),
                     )
                   ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(45),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: <Color>[
-                                    Color.fromARGB(255, 234, 133, 143),
-                                    Color.fromARGB(255, 255, 62, 104),
-                                    Color.fromARGB(255, 255, 36, 83),
-                                    Color.fromARGB(255, 220, 14, 73),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          TextButton(
-                            style: TextButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.only(
-                                  right: 60, left: 60, bottom: 20, top: 20),
-                              textStyle: const TextStyle(fontSize: 20),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed(RouteGenerator.loginPage);
-                            },
-                            child: const Text('NEXT'),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
                 )
               ])
             ])));
