@@ -52,7 +52,15 @@ class LoginFormState extends State<LoginForm> {
                 child: const Text('SIGN IN'),
               ),
             ),
-          )
+          ),
+          const Center(
+              child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
+            child: Text(
+              'Esqueceu sua senha?',
+              style: TextStyle(color: Colors.black38),
+            ),
+          ))
         ],
       ),
     );
