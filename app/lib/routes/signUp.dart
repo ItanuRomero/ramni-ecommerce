@@ -47,49 +47,72 @@ class MyStatelessWidget extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             margin: const EdgeInsets.only(top: 40),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(45),
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned.fill(
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: <Color>[
-                                  Color.fromARGB(255, 234, 133, 143),
-                                  Color.fromARGB(255, 255, 62, 104),
-                                  Color.fromARGB(255, 255, 36, 83),
-                                  Color.fromARGB(255, 220, 14, 73),
-                                ],
+            alignment: Alignment.topCenter,
+            child: ListView(shrinkWrap: true, children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 40),
+                      child: const Text(
+                        'SIGN UP',
+                        style: TextStyle(
+                            color: Colors.pink,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: const <Widget>[
+                    Expanded(
+                      child: SignUpForm(),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(45),
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned.fill(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: <Color>[
+                                    Color.fromARGB(255, 234, 133, 143),
+                                    Color.fromARGB(255, 255, 62, 104),
+                                    Color.fromARGB(255, 255, 36, 83),
+                                    Color.fromARGB(255, 220, 14, 73),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            padding: const EdgeInsets.only(
-                                right: 60, left: 60, bottom: 20, top: 20),
-                            textStyle: const TextStyle(fontSize: 20),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.only(
+                                  right: 60, left: 60, bottom: 20, top: 20),
+                              textStyle: const TextStyle(fontSize: 20),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(RouteGenerator.loginPage);
+                            },
+                            child: const Text('NEXT'),
                           ),
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(RouteGenerator.loginPage);
-                          },
-                          child: const Text('NEXT'),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              )
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ])
             ])));
   }
 }

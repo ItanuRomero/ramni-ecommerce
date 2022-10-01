@@ -14,6 +14,7 @@ class App extends StatelessWidget {
       title: 'Prova',
       theme: ThemeData(
         primarySwatch: Colors.pink,
+        fontFamily: 'SFProDisplayRegular',
         appBarTheme: const AppBarTheme(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Colors.pink,
