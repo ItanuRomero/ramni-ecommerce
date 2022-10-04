@@ -1,5 +1,7 @@
+import 'package:app/models/user.dart';
 import 'package:app/widgets/photo_user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -28,13 +30,13 @@ class _HomeState extends State<Home> {
       body: GridView.count(
         crossAxisCount: 4,
         children: List.generate(20, (index) {
-          return Center(
-              child: Column(
+          return LayoutBuilder(
+            builder: (_, constrains) => Column(
             children: [
               Image.asset(
-                'images/logo_app.png',
-                height: MediaQuery.of(context).size.height / 10,
-                color: Colors.white,
+                'images/chair2.png',
+                height: 50,
+                color: Colors.black,
                 fit: BoxFit.contain,
                 alignment: Alignment.topCenter,
               ),
@@ -50,14 +52,33 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(color: Colors.pink),
               child: PhotoHomeUserWidget(),
             ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {},
-            ),
+            Consumer<User>(builder: (context, storedValue, child) {
+                      return ListTile(
+                        title: Text(storedValue.name, style: const TextStyle(
+                            color: Colors.pink,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),),
+                        onTap: () {},
+                      );
+            }),
+            Consumer<User>(builder: (context, storedValue, child) {
+                      return ListTile(
+                        title: Text(storedValue.email, style: const TextStyle(
+                            color: Colors.pink,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),),
+                        onTap: () {},
+                      );
+            }),
+            Consumer<User>(builder: (context, storedValue, child) {
+                      return ListTile(
+                        title: Text(storedValue.phoneNumber, style: const TextStyle(
+                            color: Colors.pink,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),),
+                        onTap: () {},
+                      );
+            }),
           ],
         ),
       ),
