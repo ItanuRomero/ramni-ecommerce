@@ -1,4 +1,3 @@
-import 'package:app/routes.dart';
 import 'package:app/widgets/loginForm.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +16,11 @@ class _LoginState extends State<Login> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(widget.title),
           elevation: 0,
+          title: SizedBox(
+            child: Image.asset("images/logo_app.png",
+                color: Colors.white, width: 80),
+          ),
           leading: const BackButton(color: Colors.white),
         ),
         body: const MyStatelessWidget());
