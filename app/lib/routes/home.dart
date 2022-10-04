@@ -4,15 +4,6 @@ import 'package:flutter/material.dart';
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -24,11 +15,6 @@ class _HomeState extends State<Home> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -39,19 +25,23 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: GridView.count(
+        crossAxisCount: 4,
+        children: List.generate(20, (index) {
+          return Center(
+              child: Column(
+            children: [
+              Image.asset(
+                'images/logo_app.png',
+                height: MediaQuery.of(context).size.height / 10,
+                color: Colors.white,
+                fit: BoxFit.contain,
+                alignment: Alignment.topCenter,
+              ),
+              const Text('Item')
+            ],
+          ));
+        }),
       ),
       drawer: Drawer(
         child: ListView(
@@ -62,26 +52,33 @@ class _HomeState extends State<Home> {
             ),
             ListTile(
               title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+              onTap: () {},
             ),
             ListTile(
               title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+              onTap: () {},
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.pink,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box_rounded),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box),
+            label: '',
+          ),
+        ],
+        selectedItemColor: const Color.fromARGB(255, 24, 0, 11),
+      ),
     );
   }
 }
