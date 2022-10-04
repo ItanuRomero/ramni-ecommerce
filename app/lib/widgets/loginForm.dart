@@ -30,12 +30,13 @@ class LoginFormState extends State<LoginForm> {
           ),
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.pinkAccent,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 3, horizontal: 10)),
+              padding: const EdgeInsets.symmetric(vertical: 30.0),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.pink,
+                    padding: const EdgeInsets.all(20.0),
+                    textStyle: const TextStyle(fontSize: 20),
+                    shape: const StadiumBorder()),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -49,7 +50,11 @@ class LoginFormState extends State<LoginForm> {
                     });
                   }
                 },
-                child: const Text('SIGN IN'),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                  child: Text('SIGN IN',
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
+                ),
               ),
             ),
           ),
