@@ -42,7 +42,6 @@ class RouteGenerator {
       case home:
         return MaterialPageRoute(
           builder: (_) => const Home(
-            title: 'Home',
           ),
         );
       default:
