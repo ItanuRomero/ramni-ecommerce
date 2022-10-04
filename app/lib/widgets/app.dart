@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => User("user", null)),
+        ChangeNotifierProvider(create: (_) => User("", null, "", "", "")),
       ],
       child: MaterialApp(
         title: 'Prova',
